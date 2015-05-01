@@ -7,18 +7,27 @@
 
   };
 
+  var Tile = Mines.Tile = function (board, row, col) {
+    this.board = board;
+    this.position = [row, col];
+    this.flagged = false;
+    this.revealed = false;
+    this.bombed = false;
+  }
+
 
   var Board = Mines.Board = function (arg) {
     this.$boardElement = arg;
-    this.constructBoard();
+
+    this.grid = setup();
+    this.render(this.grid);
     $l('.tile').on('click', handleClick);
     $l('.tile').on('contextmenu', handleRightClick);
   };
 
 
-
-  Board.prototype.constructBoard = function () {
-    var rows = [];
+  Board.prototype.render = function (grid) {
+    // var rows = [];
     var result = ""
 
     for (var i = 0; i < 10; i++) {
@@ -35,6 +44,19 @@
     this.$boardElement.html(result);
   }
 
+  function setup () {
+    var rows = [];
+    for (var i = 0; i < 10; i++) {
+      var cols = [];
+      for (var j = 0; j < 10; j++) {
+        var cell = new Tile(this, i, j);
+        cols.push(cell);
+      };
+      rows.push(cols);
+    };
+    return rows;
+  };
+
   function handleClick (event) {
     $target = $l(event.currentTarget);
     targetRow = $target.attr("data-row");
@@ -43,7 +65,6 @@
   }
 
   function handleRightClick (event) {
-    // debugger
     event.preventDefault();
     $target = $l(event.currentTarget);
     targetRow = $target.attr("data-row");
