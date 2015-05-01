@@ -1,0 +1,19 @@
+
+
+.row {
+  width: 400px;
+  height: 40px;
+  border-bottom: 1px solid black;
+  border-left: 1px solid black;
+}
+
+.row:first-child {
+  border-top: 1px solid black;
+}
+
+.tile {
+  width: 39px;
+  height: 40px;
+  border-right: 1px solid black;
+  float: left;
+}
