@@ -2,8 +2,9 @@
 
 <head>
   <script type="text/javascript" src="jquery_lite.js"></script>
-  <!-- // <script type="text/javascript" src="ms_tiles.js"></script> -->
-  <script type="text/javascript" src="minesweeper.js"></script>
+  <script type="text/javascript" src="minesweeper_ui.js"></script>
+  <script type="text/javascript" src="tile.js"></script>
+  <script type="text/javascript" src="game.js"></script>
   <link rel="stylesheet" type="text/css" href="minesweeper.css">
 </head>
 
@@ -12,7 +13,11 @@
   <div id="board">testing</div>
 
   <script type="text/javascript">
-    var board = new Mines.Board($l("#board"));
+		// var game = new Game(10, 10);
+		// console.log(game.grid);
+		
+		var ui = new MinesweeperUI ($l("#board"));
+		ui.render();
   </script>
 </body>
 

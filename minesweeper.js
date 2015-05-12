@@ -3,27 +3,18 @@
     window.Mines = {};
   };
 
-  var Game = Mines.Game = function () {
-
-  };
-
-  var Tile = Mines.Tile = function (board, row, col) {
-    this.board = board;
-    this.position = [row, col];
-    this.flagged = false;
-    this.revealed = false;
-    this.bombed = false;
-  }
-
-
-  var Board = Mines.Board = function (arg) {
-    this.$boardElement = arg;
+  var Board = Mines.Board = function ($board) {
+    this.$boardElement = $board;
 
     this.grid = setup();
     this.render(this.grid);
-    $l('.tile').on('click', handleClick);
-    $l('.tile').on('contextmenu', handleRightClick);
+		this.setupEvents();
   };
+	
+	Board.prototype.setupEvents = function () {
+		$l('.tile').on('click', handleClick.bind(this));
+    $l('.tile').on('contextmenu', handleRightClick.bind(this));
+	};
 
 
   Board.prototype.render = function (grid) {
@@ -58,10 +49,11 @@
   };
 
   function handleClick (event) {
-    $target = $l(event.currentTarget);
-    targetRow = $target.attr("data-row");
-    targetCol = $target.attr("data-col");
-    console.log(targetRow, targetCol);
+    var $target = $l(event.currentTarget);
+    var targetRow = $target.attr("data-row");
+    var targetCol = $target.attr("data-col");
+		var tile = this.grid[targetRow][targetCol];
+    console.log(tile);
   }
 
   function handleRightClick (event) {
@@ -69,7 +61,7 @@
     $target = $l(event.currentTarget);
     targetRow = $target.attr("data-row");
     targetCol = $target.attr("data-col");
-    console.log("Right: ", targetRow, targetCol);
+		var tile = this.grid[targetRow][targetCol];
+    console.log(tile);
   }
-
 })();
