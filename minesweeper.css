@@ -1,6 +1,12 @@
+body {
+	padding-top: 30px;
+	width: 100%;
+	text-align: center;
+}
+
 #window {
 	width: 184px;
-/*	padding: 20px;*/
+	display: inline-block;
 	border: 5px solid #C0C0C0;
 	outline-style: inset;
 	outline-width: 2px;
@@ -8,9 +14,9 @@
 
 #info {
 	height: 32px;
-/*	width: 98%;*/
+
 	text-align: center;
-/*	padding: 1%;*/
+
 /*	border-bottom: 5px solid #C0C0C0;*/
 	background: #C0C0C0;
 	border-style: inset;
@@ -151,4 +157,20 @@ span.bomb {
 
 ._6 {
 	color: #008287;
+}
+
+#coming-soon {
+	font-family: courier;
+	font-weight: bold;
+	display: inline-block;
+	vertical-align: top;
+	text-align: left;
+}
+
+h4 {
+	padding-left: 30px;
+}
+
+ul {
+	list-style-type: none;
 }
