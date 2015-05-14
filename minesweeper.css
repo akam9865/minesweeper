@@ -1,19 +1,154 @@
-
-
-.row {
-  width: 400px;
-  height: 40px;
-  border-bottom: 1px solid black;
-  border-left: 1px solid black;
+#window {
+	width: 184px;
+/*	padding: 20px;*/
+	border: 5px solid #C0C0C0;
+	outline-style: inset;
+	outline-width: 2px;
 }
 
-.row:first-child {
-  border-top: 1px solid black;
+#info {
+	height: 32px;
+/*	width: 98%;*/
+	text-align: center;
+/*	padding: 1%;*/
+/*	border-bottom: 5px solid #C0C0C0;*/
+	background: #C0C0C0;
+	border-style: inset;
+	border-width: 2px;
+}
+
+#flags, #restart, #timer {
+	width: 24px;
+	height: 17px;
+	border: 1px solid black;
+	padding-top: 3px;
+	display: inline-block;
+	margin-top: 6px;
+	font-family: Lucida Console;
+}
+
+#flags {
+	float: left;
+	color: red;
+	background: black;
+	margin-left: 3px;
+}
+
+#timer {
+	color: red;
+	float: right;
+	background: black;
+	margin-right: 3px;
+}
+
+#restart {
+	height: 15px;
+	border: none;
+	padding: 0;
+	margin-top: 2px;
+}
+
+button {
+	font-size: 20px;
+	padding: 0;
+
+	height: 25px;
+	border-style: outset;
+	border-width: 2px;
+	border-top-color: white;
+	border-left-color: white;
+	
+	border-right-color: #c1c1c1;
+	border-bottom-color: #c1c1c1;
+	background: #C6C6C6;
+	outline: 1px solid #C0C0C0;
+}
+
+button:active {
+	border-style: inset;
+}
+
+#board {
+	border-style: inset;
+	border-width: 2px;
+}
+
+.row {
+  width: 180px;
+  height: 18px;
+	display: block;
 }
 
 .tile {
-  width: 39px;
-  height: 40px;
-  border-right: 1px solid black;
+  width: 14px;
+  height: 14px;
+	
+	border-style: outset;
+	border-width: 2px;
+	border-top-color: white;
+	border-left-color: white;
+	
+	border-right-color: #c1c1c1;
+	border-bottom-color: #c1c1c1;
   float: left;
+	background: #C0C0C0;
+}
+
+.tile:active {
+	border-style: inset;
+}
+
+.tile.revealed {
+	box-sizing: border-box;
+	width: 18px;
+	height: 18px;
+	border: 1px solid #808080;
+}
+
+.tile > span {
+	visibility: hidden;
+	text-align: center;
+	display: block;
+	font-family: courier;
+	font-weight: bold;
+}
+
+.revealed > span {
+	visibility: visible;
+}
+
+.flagged {
+	background: yellow;
+}
+
+.boom {
+	background: red;
+}
+
+span.bomb {
+	color: black;
+}
+
+._1 {
+	color: #0101FE;
+}
+
+._2 {
+	color: #007F00;
+}
+
+._3 {
+	color: #FF0000;
+}
+
+._4 {
+	color: #000080;
+}
+
+._5 {
+	color: #740304;
+}
+
+._6 {
+	color: #008287;
 }

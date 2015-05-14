@@ -9,14 +9,23 @@
 </head>
 
 <body>
-
-  <div id="board">testing</div>
+	<div id="window">
+		<div id=info>
+			<div id="flags">10</div>
+			<div id="restart"><button>&#9786;</button></div>
+			<div id="timer">00</div>
+		</div>
+	
+	
+	  <div id="board"></div>
+	</div>
 
   <script type="text/javascript">
 		// var game = new Game(10, 10);
 		// console.log(game.grid);
 		
 		var ui = new MinesweeperUI ($l("#board"));
+
 		ui.render();
   </script>
 </body>

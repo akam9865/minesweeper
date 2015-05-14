@@ -4,6 +4,7 @@ function Tile (coords, grid) {
 	this.explored = false;
 	this.bomb = false;
 	this.flagged = false;
+	this.boom = false;
 };
 
 Tile.prototype.neighbors = function () {
@@ -13,7 +14,7 @@ Tile.prototype.neighbors = function () {
 
 	for (var i = -1; i <= 1; i++) {
 		for (var j = -1; j <= 1; j++) {
-			if (_onBoard([x + i, y + j]) && this !== this.grid[x + i][y + j]) {
+			if (this._onBoard([x + i, y + j]) && this !== this.grid[x + i][y + j]) {
 				results.push(this.grid[x + i][y + j]);
 			}
 		}
@@ -21,46 +22,36 @@ Tile.prototype.neighbors = function () {
 	return results;
 };
 
-var _onBoard = function (coords) {
-	return 0 <= coords[0] && coords[0] < 3 && 0 <= coords[1] && coords[1] < 3
+Tile.prototype._onBoard = function (coords) {
+	return 0 <= coords[0] && coords[0] < this.grid.length && 0 <= coords[1] && coords[1] < this.grid[0].length
 };
 
+
 Tile.prototype.explore = function () {
-	
-	if (this.bomb) {
+  if (this.explored) {
 		return false;
-	}
-	
+	};
+
 	this.explored = true;
-	var neighbors = this.neighbors();
-	
-	if (this.neighborBombs() || neighbors.length === 0) {
+
+	if (this.bomb) {
 		return true;
 	}
 	
-	neighbors.forEach(function(neighbor) {
-		if (!neighbor.explored && !neighbor.bomb && !neighbor.flagged) {
+	if (this.neighborBombs() === 0) {
+		this.neighbors().forEach(function (neighbor) {
 			neighbor.explore();
-		}
-	})
-	
-	// this.explored = true;
-	// var neighbors = this.neighbors();
-	//
-	// if (this.neighborBombs() || neighbors.length === 0) {
-	// 	return this;
-	// }
-	//
-	// neighbors.forEach(function (neighbor) {
-	// 	neighbor.explore();
-	// })
+		});
+	}
 };
 
 Tile.prototype.neighborBombs = function () {
 	var count = 0;
-	
+
 	this.neighbors().forEach(function (neighbor) {
-		if (neighbor.bomb) { count++ };
+		if (neighbor.bomb) { 
+			count++ 
+		};
 	});
 	return count;
 };

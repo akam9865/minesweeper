@@ -25,7 +25,7 @@
   // prototypes
   DOMNodeCollection.prototype.html = function (arg) {
     // arg? y:
-    if (arg) {
+    if (arg || arg === 0) {
       // this will be the innerHTML for each node.
       this.elements.forEach (function (elem) {
         elem.innerHTML = arg;
