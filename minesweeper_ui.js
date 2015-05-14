@@ -7,6 +7,7 @@ function MinesweeperUI ($board) {
 MinesweeperUI.prototype = {
 	restart: function () {
 		this.game = new Game (10, 10, 10);
+		$l("#flags").html(10);
 		this.render();
 	},
 	
